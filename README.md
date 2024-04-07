@@ -1,3 +1,88 @@
+<!-- ## Description -->
+# Para crear un recurso
+
+```bash
+$ nest g res NOMBRE --no--spec
+en este caso use nest g res cats --no--spec
+```
+
+# Para el Error de fin de linea
+
+```bash
+en el Archivo de .eslintrc.js agregar en rules:
+
+"prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      },
+    ]
+```
+
+# Necesario para las validaciones de los tipos de datos
+
+```bash
+$ pnpm i class-validator class-transformer -SE
+```
+
+# Configuracion en el main necesario
+```bash
+app.setGlobalPrefix('api/v1'); --> localhost:300/api/v1 se configura como se quiera
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, --> que los datos esten en la lista blanca datos validos
+      forbidNonWhitelisted: true,
+      transform: true, --> conf automatica de los datos
+    }),
+  );
+```
+
+```bash
+  La conexion a la base de datos se hace en entities
+```
+
+# Para Conectar a una base de datos
+
+```bash 
+  pnpm install --save @nestjs/typeorm typeorm mysql2 -SE
+  
+  - La conexion a la db se hace en el app.module
+  tan simple como llenar cada espacio con los datos correctos
+
+  @Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql', --> base de datos
+      host: 'localhost',
+      port: 3307, --> Fijarse en puerto correcto
+      username: 'user_crud', --> usuario de la db
+      password: 'root', --> contraseña del usuario de la db
+      database: 'db_crud', --> Nombre de la db
+      entities: [],
+      synchronize: true, --> No debe usarse en produccion
+    }),
+    CatsModule,
+  ],
+  controllers: [],
+  providers: [],
+})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
