@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  // UseGuards,
 } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+// import { AuthGuard } from 'src/auth/guard/auth.guard';
 
 @Controller('cats')
 export class CatsController {
@@ -20,6 +22,7 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
 
+  // @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.catsService.findAll();
