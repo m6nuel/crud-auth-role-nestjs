@@ -21,12 +21,12 @@ export class AuthService {
       throw new BadRequestException('User already exits');
     }
     const phash = await bcrypt.hash(password, 10);
-
-    return await this.userService.create({ name, email, password: phash });
+    await this.userService.create({ name, email, password: phash });
+    return { name, email };
   }
 
   async login({ email, password }: LoginDto) {
-    const user = await this.userService.findOneByEmail(email);
+    const user = await this.userService.findByEmailWhitPassword(email);
     if (!user) {
       throw new UnauthorizedException('Credenciales Invalidas');
     }
@@ -36,12 +36,17 @@ export class AuthService {
     }
     const payload = {
       email: user.email,
+      role: user.role,
     };
     const access_token = await this.jwtService.signAsync(payload);
-    const userLog = { email: user.email };
+
     return {
-      userLog,
       access_token,
+      email: user.email,
     };
+  }
+
+  async profile({ email /* role*/ }: { email: string; role: string }) {
+    return await this.userService.findOneByEmail(email);
   }
 }

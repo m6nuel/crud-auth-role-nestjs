@@ -11,8 +11,11 @@ import {
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { Role } from 'src/common/enum/rol.enum';
 // import { AuthGuard } from 'src/auth/guard/auth.guard';
 
+@Auth(Role.USER)
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}

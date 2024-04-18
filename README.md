@@ -68,7 +68,11 @@ app.setGlobalPrefix('api/v1'); --> localhost:300/api/v1 se configura como se qui
   providers: [],
 })
 ```
+# Crear El Role.guard
 
+```bash
+   nest g guard auth/guard/roles --flat
+```
 
 
 
