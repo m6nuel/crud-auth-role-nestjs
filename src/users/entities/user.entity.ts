@@ -1,4 +1,4 @@
-import { Role } from 'src/common/enum/rol.enum';
+import { Role } from '../../common/enum/rol.enum';
 import {
   Entity,
   Column,

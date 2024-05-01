@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { Role } from 'src/common/enum/rol.enum';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { Role } from '../common/enum/rol.enum';
 // import { UpdateUserDto } from './dto/update-user.dto';
 
 @Auth(Role.ADMIN)

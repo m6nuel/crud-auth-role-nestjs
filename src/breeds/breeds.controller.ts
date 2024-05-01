@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { BreedsService } from './breeds.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { Role } from 'src/common/enum/rol.enum';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { Role } from '../common/enum/rol.enum';
 // import { UpdateBreedDto } from './dto/update-breed.dto';
 
 @Auth(Role.ADMIN)

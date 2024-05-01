@@ -13,8 +13,8 @@ import { LoginDto } from './dto/login.dto';
 // import { RolesGuard } from './guard/roles.guard';
 import { Role } from '../common/enum/rol.enum';
 import { Auth } from './decorators/auth.decorator';
-import { ActiveUser } from 'src/common/decorators/active-user.decorator';
-import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
+import { ActiveUser } from '../common/decorators/active-user.decorator';
+import { UserActiveInterface } from '../common/interfaces/user-active.interface';
 
 @Controller('auth')
 export class AuthController {
