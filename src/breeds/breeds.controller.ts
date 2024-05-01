@@ -13,6 +13,7 @@ import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Role } from 'src/common/enum/rol.enum';
 // import { UpdateBreedDto } from './dto/update-breed.dto';
 
+@Auth(Role.ADMIN)
 @Controller('breeds')
 export class BreedsController {
   constructor(private readonly breedsService: BreedsService) {}
